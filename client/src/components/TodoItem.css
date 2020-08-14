@@ -1,0 +1,57 @@
+.todosContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin: 0px 5vw;
+}
+
+.textContainer {
+  width: 100%;
+}
+
+.todosText {
+  word-wrap: break-word;   
+  overflow-wrap: break-word;
+  word-break: break-word;
+  color: rgb(121, 120, 120);
+}
+
+.btnContainer {
+  display: flex;
+  align-items: center;
+}
+
+.btnComplete {
+  font-size: 16px;
+  margin: 0px 5px;
+  height: 36px;
+  width: 36px;
+  background-color: rgb(5, 206, 95);
+  color: rgb(235, 222, 222);
+  border: 0px;
+  border-radius: 5px;
+  transition: all 0.2s ease-out
+}
+
+.btnComplete:hover {
+  cursor: pointer;
+  color: rgb(5, 206, 95);
+  background-color: rgb(235, 222, 222);
+}
+
+.btnDelete {
+  font-size: 16px;
+  height: 36px;
+  width: 36px;
+  background-color: rgb(204, 23, 23);
+  color: rgb(235, 223, 223);
+  border: 0px;
+  border-radius: 5px;
+  transition: all 0.2s ease-out;
+}
+
+.btnDelete:hover {
+  cursor: pointer;
+  color: rgb(204, 23, 23);
+  background-color: rgb(235, 223, 223);
+}

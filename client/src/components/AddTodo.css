@@ -1,0 +1,40 @@
+.addTodoForm {
+  display: flex;
+  flex-direction: row;
+  margin: 0px 5vw;
+  margin-bottom: 24px;
+}
+
+.inputText {
+  flex-grow: 9;
+  color: rgb(151, 150, 150);
+  background-color: #f3f4f5;
+  padding: 10px 10px;
+  border-radius: 5px;
+  margin-right: 5px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+}
+
+input::placeholder {
+  color: gray;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+}
+
+.submitBtn {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  background-color:#319ef0;
+  color: rgb(236, 230, 230);
+  border: 0px;
+  border-radius: 5px;
+  width: 77px;
+  transition: all 0.2s ease-out;
+}
+
+.submitBtn:hover {
+  cursor: pointer;
+  color: #319ef0;
+  background-color: rgb(236, 230, 230);
+}

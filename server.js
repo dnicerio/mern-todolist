@@ -1,16 +1,18 @@
 // Imports
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
 const todoRoutes = require('./routes/todoRoutes');
+
 
 // Express
 const app = express();
 const PORT = process.env.PORT || 8080;
 
 // Connect to MongoDB Atlas
-const dbURI = 'mongodb+srv://dnicerio:HOTCAKE123@blog-project.9ey8o.mongodb.net/mern-todolist?retryWrites=true&w=majority';
-mongoose.connect(process.env.MONGODB_URI || dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
+const dbURI = process.env.DATABASE_URL;
+mongoose.connect(process.env.MONGODB_URI || dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false })
   .then((result) => app.listen(PORT, console.log(`Connected to MongoDB. Server is listening to port:${PORT}`)))
   .catch((err) => console.log(err));
 
@@ -20,3 +22,8 @@ app.use(express.urlencoded({ extended: true }));
 
 // Todos REST API Routes
 app.use('/api/todos', todoRoutes);
+
+// Heroku Deploy Config
+if(process.env.NODE_ENV === 'production') {
+  app.use(express.static('client/build'));
+}

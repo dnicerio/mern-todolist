@@ -32,28 +32,25 @@ export class App extends Component {
 
   // Toggle Complete
   toggleComplete = (_id, title, completed) => {
-    // console.log(_id)
-    
-    this.setState({
-      todos: this.state.todos.map((todo) => {
-        if (todo._id === _id) {
-          todo.completed = !todo.completed
-        }
-        return todo;
-      })
-    })
-    
+    completed = !completed
+        
     axios.post(`/api/todos/${_id}`, qs.stringify({
       title,
       completed
     }))
       .then(res => {
-        console.log(res)
+        this.setState({
+          todos: this.state.todos.map((todo) => {
+            if (todo._id === _id) {
+              todo.completed = !todo.completed
+            }
+            return todo;
+          })
+        });
       })
       .catch(err => {
         console.log(err)
-      })
-    
+      });
   }
 
   // Delete Todo
@@ -75,7 +72,7 @@ export class App extends Component {
         todos: [...this.state.todos, res.data]
       }))
       .catch(err => {
-        console.log(err)
+        console.log(err);
       })
   }
 

@@ -61,14 +61,15 @@ const todo_update = (req, res) => {
   const updatedTodo = req.body;
   
   if(updatedTodo != null) {
-    Todo.findByIdAndUpdate(id, updatedTodo, (err, result) => {
-      if(err) {
-        res.status(500).json({ message: err.message })
-      } else {
-        res.json(result);
-      }
-    });
+    Todo.findByIdAndUpdate(id, updatedTodo)
+      .then((result) => {
+        res.status(200).json({ message: 'Todo Updated' });
+      })
+      .catch((err) => {
+        res.status(500).json({ message: err.message });
+      });
   }
+  
 }
 
 module.exports = {

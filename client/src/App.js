@@ -13,7 +13,7 @@ export class App extends Component {
     todos: []
   }
 
-  // Load todos from localStorage on component startup
+  // GET Todos from REST API and Restore todos from localStorage on component startup
   componentDidMount = () => {
     const storedTodos = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
     if (storedTodos) {
@@ -22,7 +22,8 @@ export class App extends Component {
     })}
 
     axios.get('/api/todos')
-      .then((res) => this.setState({ todos: res.data }));
+      .then((res) => this.setState({ todos: res.data }))
+      .catch((err) => console.log(err));
   }
 
   // Save todos to localStorage everytime component updates

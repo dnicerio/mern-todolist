@@ -14,7 +14,7 @@ export class AddTodo extends Component {
     })
   }
 
-  // Handle submit to pass input text value to AddTodo function
+  // Handle submit and pass input text value to AddTodo function
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.addTodo(this.state.title);
@@ -27,6 +27,7 @@ export class AddTodo extends Component {
     return (
       <div className="addTodoContainer">
         <form className="addTodoForm" onSubmit={this.handleSubmit.bind(this)}> 
+          
           <input 
             className="inputText" 
             type="text" 
@@ -35,11 +36,13 @@ export class AddTodo extends Component {
             value={this.state.title} 
             onChange={this.handleInput.bind(this)}>
           </input>
+
           <button 
             className="submitBtn" 
             type="submit"
             >Submit
           </button>
+          
         </form>
       </div>
     )

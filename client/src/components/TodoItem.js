@@ -4,7 +4,7 @@ import './TodoItem.css';
 
 
 export class TodoItem extends Component {
-  // Line-through completed todos on button click
+  // Toggle strike-through on completed todos
   completeLine = () => {
     return {
       textDecoration: this.props.todo.completed ? 'line-through' : 'none'

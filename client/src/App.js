@@ -35,7 +35,7 @@ export class App extends Component {
   toggleComplete = (_id, title, completed) => {
     completed = !completed
         
-    axios.post(`/api/todos/${_id}`, qs.stringify({
+    axios.put(`/api/todos/${_id}`, qs.stringify({
       title,
       completed
     }))

@@ -3,9 +3,9 @@ const Todo = require('../models/todo');
 // todo_index, todo_post, todo_details, todo_delete, todo_update
 
 const todo_index = (req, res) => {
-  Todo.find().sort({ createdAt: -1 })
+  Todo.find().sort({ createdAt: 1 })
     .then((result) => {
-      res.json(result);
+      res.status(200).json(result);
     })
     .catch((err) => {
       res.status(500).json({ message: err.message });
@@ -48,7 +48,7 @@ const todo_delete = (req, res) => {
       if(result === null) {
         return res.status(404).json({ message: 'Cannot find todo' });
       } else {
-      res.json({ message: 'Deleted Todo' });
+      res.status(200).json({ message: 'Deleted Todo' });
       }
     })
     .catch((err) => {

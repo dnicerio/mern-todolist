@@ -62,7 +62,7 @@ const todo_update = (req, res) => {
   
   if(updatedTodo != null) {
     Todo.findByIdAndUpdate(id, updatedTodo)
-      .then((result) => {
+      .then(() => {
         res.status(200).json({ message: 'Todo Updated' });
       })
       .catch((err) => {

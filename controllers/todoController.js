@@ -1,8 +1,8 @@
 const Todo = require('../models/todo');
 
-// todo_index, todo_post, todo_details, todo_delete, todo_update
+// getAllTodos, createTodo, getTodo, deleteTodo, updateTodo
 
-const todo_index = (req, res) => {
+const getAllTodos = (req, res) => {
   Todo.find().sort({ createdAt: 1 })
     .then((result) => {
       res.status(200).json(result);
@@ -12,7 +12,7 @@ const todo_index = (req, res) => {
     });
 }
 
-const todo_post = (req, res) => {
+const createTodo = (req, res) => {
   const todo = new Todo(req.body);
 
   todo.save()
@@ -24,7 +24,7 @@ const todo_post = (req, res) => {
     });
 }
 
-const todo_details = (req, res) => {
+const getTodo = (req, res) => {
   const id = req.params.id;
 
   Todo.findById(id)
@@ -40,7 +40,7 @@ const todo_details = (req, res) => {
     });
 }
 
-const todo_delete = (req, res) => {
+const deleteTodo = (req, res) => {
   const id = req.params.id;
 
   Todo.findByIdAndDelete(id)
@@ -56,7 +56,7 @@ const todo_delete = (req, res) => {
     });
 }
 
-const todo_update = (req, res) => {
+const updateTodo = (req, res) => {
   const id = req.params.id;
   const updatedTodo = req.body;
   
@@ -73,9 +73,9 @@ const todo_update = (req, res) => {
 }
 
 module.exports = {
-  todo_index,
-  todo_post,
-  todo_details,
-  todo_delete,
-  todo_update
+  getAllTodos,
+  createTodo,
+  getTodo,
+  deleteTodo,
+  updateTodo
 }
